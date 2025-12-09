@@ -2,14 +2,15 @@ from datetime import datetime, timedelta
 import random
 import pytest
 from selenium import webdriver
-from const import BASE_URL
 from faker import Faker
 
-@pytest.fixture
+from data import Urls
+
+@pytest.fixture(scope='function')
 def driver():
     driver = webdriver.Firefox()
+    driver.get(Urls.BASE_URL)
     driver.maximize_window()
-    driver.get(BASE_URL)
     yield driver
     driver.quit()
 

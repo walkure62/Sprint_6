@@ -1,35 +1,20 @@
+import allure
 import pytest
-from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.main_page import MainPageScooter
-from const import ACCORDION_DATA, BASE_URL
+from data import AccordionData
 
 class TestAccordion:
-    driver = None
-
-    @classmethod
-    def setup_class(cls):
-        cls.driver = webdriver.Firefox()
     
-    @pytest.mark.parametrize("button_id, expected_text", ACCORDION_DATA)
-    def test_text_in_accordion(self, button_id, expected_text):
-        self.driver.get(BASE_URL)
-        main_page = MainPageScooter(self.driver)
-        main_page.waiting_page_upload()
+    @pytest.mark.parametrize("button_id, expected_text", AccordionData.ACCORDION_DATA)
+    @allure.step("Проверка пункта {button_id} из списка вопросов на главной странице")
+    def test_text_in_accordion(self, driver, button_id, expected_text):
+        allure.dynamic.description(f"Проверка пункта {button_id} из списка вопросов на главной странице на соответствие текста")
+        main_page = MainPageScooter(driver)
         main_page.scroll_to_the_end_of_page()
         main_page.click_to_cookie_close_button()
-        button = getattr(main_page, f'accordion_button_{button_id}')
-        panel = getattr(main_page, f'accordion_panel_{button_id}')
-        main_page.click_to_accordion_button(button)
-        WebDriverWait(self.driver, 15).until(
-            EC.presence_of_element_located(panel)
-        )
+        main_page.click_to_accordion_buttons(button_id)
     
-        assert self.driver.find_element(*panel).get_attribute('hidden') != 'true'
-        assert main_page.get_text_in_accordion(panel) == expected_text
+        assert main_page.get_text_in_accordion(button_id) == expected_text
     
-    @classmethod
-    def teardown_class(cls):
-        cls.driver.quit() 
     

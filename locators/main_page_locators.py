@@ -1,0 +1,22 @@
+from selenium.webdriver.common.by import By
+
+class MainPageLocators:
+    TOP_ORDER_BUTTON = (By.XPATH, "//div[@class='Header_Nav__AGCXC']//button[text()='Заказать']")
+    MIDDLE_ORDER_BUTTON = (By.XPATH, "//div[@class='Home_FinishButton__1_cWm']//button[text()='Заказать']")
+    COOKIE_CLOSE_BUTTON = (By.ID, 'rcc-confirm-button')
+    ACCORDION_BUTTON_1 = (By.ID, 'accordion__heading-0')
+    ACCORDION_PANEL_1 = (By.XPATH, '//div[@id="accordion__panel-0"]/p')
+    ACCORDION_BUTTON_2 = (By.ID, 'accordion__heading-1')
+    ACCORDION_PANEL_2 = (By.XPATH, '//div[@id="accordion__panel-1"]/p')
+    ACCORDION_BUTTON_3 = (By.ID, 'accordion__heading-2')
+    ACCORDION_PANEL_3 = (By.XPATH, '//div[@id="accordion__panel-2"]/p')
+    ACCORDION_BUTTON_4 = (By.ID, 'accordion__heading-3')
+    ACCORDION_PANEL_4 = (By.XPATH, '//div[@id="accordion__panel-3"]/p')
+    ACCORDION_BUTTON_5 = (By.ID, 'accordion__heading-4')
+    ACCORDION_PANEL_5 = (By.XPATH, '//div[@id="accordion__panel-4"]/p')
+    ACCORDION_BUTTON_6 = (By.ID, 'accordion__heading-5')
+    ACCORDION_PANEL_6 = (By.XPATH, '//div[@id="accordion__panel-5"]/p')
+    ACCORDION_BUTTON_7 = (By.ID, 'accordion__heading-6')
+    ACCORDION_PANEL_7 = (By.XPATH, '//div[@id="accordion__panel-6"]/p')
+    ACCORDION_BUTTON_8 = (By.ID, 'accordion__heading-7')
+    ACCORDION_PANEL_8 = (By.XPATH, '//div[@id="accordion__panel-7"]/p')
